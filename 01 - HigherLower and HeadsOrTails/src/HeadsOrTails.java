@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by Hubert on 28.07.2017.
+ * Created by zaqs on 28.07.2017.
  */
 public class HeadsOrTails {
     public void game() {
