@@ -15,18 +15,22 @@ public class Main {
         Scanner read = new Scanner(System.in);
         while (true) {
             choice = read.nextLine();
-            if (choice == "1" || choice == "2" || choice == "3") {
+            if (choice.equals("1") || choice.equals("2") || choice.equals("3")) {
                 break;
             } else {
                 System.out.println("You chose wrong. Try again.");
             }
         }
-        if (choice == "1") {
-
-        } else if (choice == "2") {
-
-        } else if (choice == "3") {
-            System.exit(0);
+        switch (choice){
+            case "1":
+                HigherLower higherLower = new HigherLower();
+                break;
+            case "2":
+                HeadsOrTails headsOrTails = new HeadsOrTails();
+                break;
+            case "3":
+                System.exit(0);
+                break;
         }
     }
 }

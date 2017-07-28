@@ -88,16 +88,20 @@ public class NameGenerator {
         while (true) {
             choice = read.nextLine();
             if (choice.equalsIgnoreCase("male") || choice.equalsIgnoreCase("female")) {
+                choice = choice.toLowerCase();
                 break;
             } else {
                 System.out.println("You choose wrong option. Try again.");
             }
         }
         try {
-            if (choice.equalsIgnoreCase("male")) {
-                generator(choice);
-            } else if (choice.equalsIgnoreCase("female")) {
-                generator(choice);
+            switch(choice){
+                case "male":
+                    generator(choice);
+                    break;
+                case "female":
+                    generator(choice);
+                    break;
             }
         }catch(IOException e){
             System.out.println("Something is wrong with needed files. The program will now exit.");
