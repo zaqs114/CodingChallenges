@@ -47,10 +47,18 @@ public class NameGenerator {
 
     private static String passwordGenerator(){
         Random randomizer = new Random();
-        String alphabet = "qwertyuiopasdfghjklzxcvbnm1234567890!@#$%^&*()";
+        String alphabet = "qwertyuiopasdfghjklzxcvbnm";
+        String numbers = "1234567890";
+        String specialchars = "!@#$%^&*()";
         String password = Character.toString(alphabet.charAt(randomizer.nextInt(alphabet.length())));
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 4; i++) {
            password = password + alphabet.charAt(randomizer.nextInt(alphabet.length()));
+        }
+        for (int i=0; i<2; i++){
+            password = password + specialchars.charAt(randomizer.nextInt(specialchars.length()));
+        }
+        for (int i=0; i<2; i++){
+            password = password + numbers.charAt(randomizer.nextInt(numbers.length()));
         }
 
         return password;
@@ -70,9 +78,7 @@ public class NameGenerator {
 
         } catch (IOException e) {
             System.out.println("Something with yor file is wrong. Try again.");
-
         }
-
     }
 
     public static void main(String[] args) throws IOException{
