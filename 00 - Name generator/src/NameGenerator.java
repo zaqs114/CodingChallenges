@@ -1,5 +1,3 @@
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,27 +37,37 @@ public class NameGenerator {
 
     }
 
-    private int birthGenerator(){
-        int birthDay;
-        int minDay=1;
-        int maxDay;
-        int birthMonth;
-        int minMonth=1;
-        int maxMonth=12;
-        int birthYear;
-        int minYear=1950;
-        int maxYear=2017;
+    private static String mailGenerator(String firstname, String surname){
+        String[] providers = {"yahoo.com", "gmail.com", "bing.com", "msn.com", "hotmail.com"};
+        int rnd = new Random().nextInt(providers.length);
+        String provider =  providers[rnd];
+        int number = new Random().nextInt(100);
+        return firstname.toLowerCase()+"."+surname.toLowerCase()+number+"@"+provider;
+    }
 
+    private static String passwordGenerator(){
         Random randomizer = new Random();
-        birthMonth = randomizer.nextInt(maxMonth+1 - minMonth) + minMonth;
+        String alphabet = "qwertyuiopasdfghjklzxcvbnm1234567890!@#$%^&*()";
+        String password = Character.toString(alphabet.charAt(randomizer.nextInt(alphabet.length())));
+        for (int i = 0; i < 9; i++) {
+           password = password + alphabet.charAt(randomizer.nextInt(alphabet.length()));
+        }
 
+        return password;
     }
 
     private static void generator(String choice) throws IOException {
         try {
-            String firstName = nameGenerator(choice);
+            String firstname = nameGenerator(choice);
             String surname = nameGenerator("sur");
-            System.out.println("Imie: " + firstName + " " + "Nazwisko: " + surname);
+            String email = mailGenerator(firstname, surname);
+            String password = passwordGenerator();
+
+            System.out.println("Name "+firstname);
+            System.out.println("Surname: " + surname);
+            System.out.println("Email: " + email);
+            System.out.println("Password: "+ password);
+
         } catch (IOException e) {
             System.out.println("Something with yor file is wrong. Try again.");
 
@@ -74,7 +82,6 @@ public class NameGenerator {
         choice = read.nextLine();
         if (choice.equalsIgnoreCase("male")){
             generator(choice);
-
         }else if (choice.equalsIgnoreCase("female")){
             generator(choice);
         }else{
