@@ -19,11 +19,15 @@ public class NameGenerator {
     private static String nameGenerator(String choice) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(choice.toLowerCase()+"names.txt"));
         List<String> list = new LinkedList<String>();
-
+        try{
          /* loading database to list*/
         String line = null;
         while ((line = reader.readLine()) != null) {
             list.add(line);
+        }
+        }catch(IOException e){
+            System.out.println("Something with yor file is wrong. Try again.");
+
         }
 
         int length = list.size();
@@ -35,13 +39,33 @@ public class NameGenerator {
 
     }
 
-    private static void generator(String choice) throws IOException{
-        String firstName = nameGenerator(choice);
-        String surname = nameGenerator("sur");
-        System.out.println("Imie: " + firstName + " " + "Nazwisko: " + surname);
+    private int birthGenerator(){
+        int birthDay;
+        int minDay=1;
+        int maxDay;
+        int birthMonth;
+        int minMonth=1;
+        int maxMonth=12;
+        int birthYear;
+        int minYear=1950;
+        int maxYear=2017;
 
+        Random randomizer = new Random();
+        birthMonth = randomizer.nextInt(maxMonth+1 - minMonth) + minMonth;
+
+    }
+
+    private static void generator(String choice) throws IOException {
+        try {
+            String firstName = nameGenerator(choice);
+            String surname = nameGenerator("sur");
+            System.out.println("Imie: " + firstName + " " + "Nazwisko: " + surname);
+        } catch (IOException e) {
+            System.out.println("Something with yor file is wrong. Try again.");
 
         }
+
+    }
 
     public static void main(String[] args) throws IOException{
         String choice;
