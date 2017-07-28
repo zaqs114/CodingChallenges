@@ -27,6 +27,7 @@ public class Main {
                 break;
             case "2":
                 HeadsOrTails headsOrTails = new HeadsOrTails();
+                headsOrTails.game();
                 break;
             case "3":
                 System.exit(0);

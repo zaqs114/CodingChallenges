@@ -5,10 +5,10 @@ import java.util.Scanner;
  * Created by Hubert on 28.07.2017.
  */
 public class HeadsOrTails {
-    public static void main(String[] args) {
+    public void game() {
         String choice;
         Scanner read = new Scanner(System.in);
-        System.out.println("Do you want to start a new game?");
+        System.out.println("Do you want to start a new game? Type YES or NO.");
 
         while (true) {
             choice = read.nextLine();
@@ -24,8 +24,8 @@ public class HeadsOrTails {
                     String[] options = {"heads", "tails"};
                     Random randomizer = new Random();
 
-                    int position = randomizer.nextInt(options.length);
-                    String winningside = options[position];
+                    int index = randomizer.nextInt(options.length);
+                    String winningside = options[index];
 
                     System.out.println("Heads or Tails?");
 
@@ -40,14 +40,15 @@ public class HeadsOrTails {
                     }
                     if (choice.equals(winningside)){
                         System.out.println("Congratulations, you won!");
-                        HeadsOrTails headsOrTails = new HeadsOrTails();
+                        game();
+
                     }else {
                         System.out.println("Sadly, you lost.");
-                        HeadsOrTails headsOrTails = new HeadsOrTails();
+                        game();
                     }
                 break;
             case "no":
-                Main main = new Main();
+                Main.main(null);
                 break;
         }
     }
