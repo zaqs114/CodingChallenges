@@ -81,17 +81,27 @@ public class NameGenerator {
         }
     }
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         String choice;
         System.out.println("Male or Female?");
         Scanner read = new Scanner(System.in);
-        choice = read.nextLine();
-        if (choice.equalsIgnoreCase("male")){
-            generator(choice);
-        }else if (choice.equalsIgnoreCase("female")){
-            generator(choice);
-        }else{
-            System.out.println("You choose wrong option. Try again.");
+        while (true) {
+            choice = read.nextLine();
+            if (choice.equalsIgnoreCase("male") || choice.equalsIgnoreCase("female")) {
+                break;
+            } else {
+                System.out.println("You choose wrong option. Try again.");
+            }
         }
+        try {
+            if (choice.equalsIgnoreCase("male")) {
+                generator(choice);
+            } else if (choice.equalsIgnoreCase("female")) {
+                generator(choice);
+            }
+        }catch(IOException e){
+            System.out.println("Something is wrong with needed files. The program will now exit.");
+        }
+
     }
 }
