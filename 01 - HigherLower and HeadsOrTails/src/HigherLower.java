@@ -15,10 +15,9 @@ public class HigherLower extends Initialization {
         System.out.println("Type number to check if is it a right guess or if the number is higher or lower");
         for (int i=0; i<10; i++){
             System.out.println("Type your guessed number: ");
-            String choice = read.nextLine();
             int guessedNumber = 0;
             try{
-                guessedNumber = Integer.parseInt(choice);
+                guessedNumber = Integer.parseInt(read.next());
             }catch(Exception e1){
                 System.out.println("You didnt type a correct number. Try again");
                 game();
