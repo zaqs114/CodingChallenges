@@ -24,10 +24,11 @@ public class Main {
         switch (choice){
             case "1":
                 HigherLower higherLower = new HigherLower();
+                higherLower.startGame();
                 break;
             case "2":
                 HeadsOrTails headsOrTails = new HeadsOrTails();
-                headsOrTails.game();
+                headsOrTails.startGame();
                 break;
             case "3":
                 System.exit(0);
