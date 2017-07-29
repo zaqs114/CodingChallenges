@@ -18,7 +18,7 @@ public class HigherLower extends Initialization {
             String choice = read.nextLine();
             int guessedNumber = 0;
             try{
-                guessedNumber = Integer.parseInt(choice); //try catch na mismatchargument czy tam format
+                guessedNumber = Integer.parseInt(choice);
             }catch(Exception e1){
                 System.out.println("You didnt type a correct number. Try again");
                 game();
