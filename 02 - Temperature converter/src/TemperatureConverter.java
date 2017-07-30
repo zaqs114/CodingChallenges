@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -44,14 +45,14 @@ public class TemperatureConverter {
         System.out.println("Type the temperature that you want to convert (number).");
         try{
             temperature=Double.parseDouble(read.nextLine());
-        }catch(Exception e){
+        }catch(InputMismatchException e){
             System.out.println("You typed wrong number. Try again");
             main(null);
         }
         System.out.println("Type the unit of that temperature that you just typed (Celsius/Kelvin/Fahrenheit)");
-        unit= read.nextLine();
 
         while(true){
+            unit= read.nextLine();
             if(unit.equalsIgnoreCase("celsius")|| unit.equals("kelvin")||unit.equals("fahrenheit")) {
                 unit=unit.toLowerCase();
                 break;
@@ -59,19 +60,19 @@ public class TemperatureConverter {
                 System.out.println("You typed wrong unit. Try again.");
             }
         }
-        System.out.println("Your temperature is "+temperature +" of "+ unit);
+        System.out.println("Your temperature is "+temperature +" "+ unit+" degrees.");
         switch(unit){
             case "kelvin":
-                System.out.println("This is: " + new DecimalFormat("##.##").format(kelvinToCelsius(temperature)) + " of Celsius.");
-                System.out.println("This is also "+ new DecimalFormat("##.##").format(kelvinToFahrenheit(temperature))+ " of Fahrenheit");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(kelvinToCelsius(temperature)) + " celsius degrees.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(kelvinToFahrenheit(temperature))+ " fahrenheit degrees.");
                 break;
             case "celsius":
-                System.out.println("This is: " + new DecimalFormat("##.##").format(celsiusToKelvin(temperature))+ " of Kelvin.");
-                System.out.println("This is also "+ new DecimalFormat("##.##").format(celsiusToFahrenheit(temperature))+ " of Fahrenheit");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(celsiusToKelvin(temperature))+ " kelvin degrees.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(celsiusToFahrenheit(temperature))+ " fahrenheit degrees.");
                 break;
             case "fahrenheit":
-                System.out.println("This is: " + new DecimalFormat("##.##").format(fahrenheitToKelvin(temperature))+ " of Kelvin.");
-                System.out.println("This is also "+ new DecimalFormat("##.##").format(fahrenheitToCelsius(temperature))+ " of Celsius");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(fahrenheitToKelvin(temperature))+ " kelvin degrees.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(fahrenheitToCelsius(temperature))+ " celsius degrees.");
                 break;
         }
     }
