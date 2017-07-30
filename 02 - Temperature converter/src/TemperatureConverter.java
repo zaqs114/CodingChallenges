@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -61,16 +62,16 @@ public class TemperatureConverter {
         System.out.println("Your temperature is "+temperature +" of "+ unit);
         switch(unit){
             case "kelvin":
-                System.out.println("This is: " + kelvinToCelsius(temperature) + " of Celsius.");
-                System.out.println("This is also "+ converter(temperature, -457.87)+ " of Fahrenheit");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(kelvinToCelsius(temperature)) + " of Celsius.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(kelvinToFahrenheit(temperature))+ " of Fahrenheit");
                 break;
             case "celsius":
-                System.out.println("This is: " + converter(temperature, 274.15) + " of Kelvin.");
-                System.out.println("This is also "+ converter(temperature, 33.8)+ " of Fahrenheit");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(celsiusToKelvin(temperature))+ " of Kelvin.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(celsiusToFahrenheit(temperature))+ " of Fahrenheit");
                 break;
             case "fahrenheit":
-                System.out.println("This is: " + converter(temperature, 255.927778) + " of Kelvin.");
-                System.out.println("This is also "+ converter(temperature, -17.2222222)+ " of Celsius");
+                System.out.println("This is: " + new DecimalFormat("##.##").format(fahrenheitToKelvin(temperature))+ " of Kelvin.");
+                System.out.println("This is also "+ new DecimalFormat("##.##").format(fahrenheitToCelsius(temperature))+ " of Celsius");
                 break;
         }
     }
