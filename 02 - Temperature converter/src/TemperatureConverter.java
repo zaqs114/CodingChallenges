@@ -4,21 +4,45 @@ import java.util.Scanner;
  * Created by zaqs114 on 30.07.2017.
  */
 public class TemperatureConverter {
-    public static double converter(int temperature, double ratio){
-        double converted=0;
-        converted=temperature+ratio;
-        return converted;
+    private static double kelvinToCelsius(double temperature){
+        temperature = temperature - 273.15;
+        return temperature;
+    }
+
+    private static double kelvinToFahrenheit(double temperature){
+        temperature = temperature * 9/5 -459.67;
+        return temperature;
+    }
+
+    private static double celsiusToKelvin(double temperature){
+        temperature=temperature+273.15;
+        return temperature;
+    }
+
+    private static double celsiusToFahrenheit(double temperature){
+        temperature= temperature*9/5+32;
+        return temperature;
+    }
+
+    private static double fahrenheitToKelvin(double temperature){
+        temperature= (temperature+459.67)*5/9;
+        return temperature;
+    }
+
+    private static double fahrenheitToCelsius(double temperature){
+        temperature=(temperature-32)*5/9;
+        return temperature;
     }
 
     public static void main(String[] args){
         Scanner read = new Scanner(System.in);
 
         String unit;
-        int temperature=0;
+        double temperature=0;
 
         System.out.println("Type the temperature that you want to convert (number).");
         try{
-            temperature=Integer.parseInt(read.nextLine());
+            temperature=Double.parseDouble(read.nextLine());
         }catch(Exception e){
             System.out.println("You typed wrong number. Try again");
             main(null);
@@ -37,7 +61,7 @@ public class TemperatureConverter {
         System.out.println("Your temperature is "+temperature +" of "+ unit);
         switch(unit){
             case "kelvin":
-                System.out.println("This is: " + converter(temperature, -272.15) + " of Celsius.");
+                System.out.println("This is: " + kelvinToCelsius(temperature) + " of Celsius.");
                 System.out.println("This is also "+ converter(temperature, -457.87)+ " of Fahrenheit");
                 break;
             case "celsius":
