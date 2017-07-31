@@ -17,6 +17,18 @@ public class AgeCalculator {
         }
     }
 
+    private static int checkMotnhDays(int month, int year){
+        if (month == 1 || month == 3 || month==5 || month == 7 || month==8||month==10||month==12){
+            return 31;
+        }else if(month==4||month==6||month==9||month==11){
+            return 30;
+        }else if (ifLeapYear(year)){
+            return 29;
+        }else
+            return 28;
+    }
+
+
     public static void main(String[] args) throws InputMismatchException{
         Scanner read = new Scanner(System.in);
         LocalDate currentDate = LocalDate.now();
@@ -48,7 +60,7 @@ public class AgeCalculator {
             main(null);
         }
 
-        for(int i=birthYear; i<currentYear; i++){
+        for(int i=birthYear+1; i<currentYear; i++){
             if(ifLeapYear(i)){
                 numberOfDays=numberOfDays+leapYear;
             }else{
