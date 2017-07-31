@@ -45,7 +45,7 @@ public class TemperatureConverter {
         System.out.println("Type the temperature that you want to convert (number).");
         try{
             temperature=Double.parseDouble(read.nextLine());
-        }catch(InputMismatchException e){
+        }catch(NumberFormatException e){
             System.out.println("You typed wrong number. Try again");
             main(null);
         }
@@ -75,5 +75,6 @@ public class TemperatureConverter {
                 System.out.println("This is also "+ new DecimalFormat("##.##").format(fahrenheitToCelsius(temperature))+ " celsius degrees.");
                 break;
         }
+        System.exit(0);
     }
 }
