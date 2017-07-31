@@ -9,6 +9,7 @@ public class BMICalculator {
 
         double weight=0;
         double height=0;
+        int bmi=0;
 
         System.out.println("Type your weight (in kg): ");
 
@@ -29,8 +30,9 @@ public class BMICalculator {
         }
 
         height=height/100;
+        bmi=(int)(weight/(height*height));
 
-        System.out.println("Your BMI is "+(weight/(height*height)));
+        System.out.println("Your BMI is "+bmi);
         System.exit(0);
     }
 }
