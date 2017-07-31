@@ -18,7 +18,7 @@ public class HigherLower extends Initialization {
             int guessedNumber = 0;
             try{
                 guessedNumber = Integer.parseInt(read.next());
-            }catch(Exception e1){
+            }catch(NumberFormatException e1){
                 System.out.println("You didnt type a correct number. Try again");
                 game();
             }
